@@ -15,22 +15,32 @@
   <script type="text/babel">
     const root = document.getElementById("root");
     // This is JSX
-    const Title = (
-      <h3 id="title" onMouseEnter={() => console.log("mouse enter!")}>
-        Hello I'm a title
-      </h3>
-    );
+    function Title() {
+      return (
+        <h3 id="title" onMouseEnter={() => console.log("mouse enter!")}>
+          Hello I'm a title
+        </h3>
+      );
+    }
 
-    const Button = (
-      <button
-        style={{ backgroundColor: "tomato" }}
-        onClick={() => console.log("im clicked")}
-      >
-        Click me
-      </button>
-    );
+    function Button() {
+      return (
+        <button
+          style={{ backgroundColor: "tomato" }}
+          onClick={() => console.log("im clicked")}
+        >
+          Click me
+        </button>
+      );
+    }
 
-    const container = React.createElement("div", null, [Title, Button]);
-    ReactDOM.render(container, root);
+    const Container = (
+      <div>
+        <Title />
+        // 컴포넌트의 첫글자는 항상 대문자여야 한다. 소문자면 React, JSX는 HTML 태그라고 생각함. <title>
+        <Button />
+      </div>
+    );
+    ReactDOM.render(Container, root);
   </script>
 </html>
