@@ -14,33 +14,21 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.getElementById("root");
-    // This is JSX
-    function Title() {
-      return (
-        <h3 id="title" onMouseEnter={() => console.log("mouse enter!")}>
-          Hello I'm a title
-        </h3>
-      );
+    let counter = 0;
+    function render() {
+      ReactDOM.render(<Container />, root);
     }
-
-    function Button() {
-      return (
-        <button
-          style={{ backgroundColor: "tomato" }}
-          onClick={() => console.log("im clicked")}
-        >
-          Click me
-        </button>
-      );
+    function countUp() {
+      counter = counter + 1;
+      render();
     }
-
-    const Container = (
+    const Container = () => (
+      // 컴포넌트의 첫글자는 항상 대문자여야 한다. 소문자면 React, JSX는 HTML 태그라고 생각함. <title>
       <div>
-        <Title />
-        // 컴포넌트의 첫글자는 항상 대문자여야 한다. 소문자면 React, JSX는 HTML 태그라고 생각함. <title>
-        <Button />
+        <h3>Total clicks: {counter}</h3>
+        <button onClick={countUp}>Click me</button>
       </div>
     );
-    ReactDOM.render(Container, root);
+    render();
   </script>
 </html>
